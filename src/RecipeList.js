@@ -30,7 +30,7 @@ function RecipeList({ recipes, onDelete }) {
         </thead>
         <tbody>
           {recipes.map((recipe, index) => (
-            <tr key={index}>
+            <tr key={index}  style={{ backgroundColor: index % 2 === 0 ? 'Khaki' : 'white' }}>
               <td>{recipe.name}</td>
               <td>{recipe.cuisine}</td>
               <td><img src={recipe.photo} style={{ width: '100px' }} /></td>

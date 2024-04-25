@@ -16,6 +16,17 @@ function RecipeCreate({ onCreate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      !formData.name ||
+      !formData.cuisine ||
+      !formData.photo ||
+      !formData.ingredients ||
+      !formData.preparation
+    ) {
+      alert("Please fill out all recipe fields!!");
+      return;
+    }
+
     onCreate(formData);
     // Clear the form
     setFormData({
@@ -29,40 +40,46 @@ function RecipeCreate({ onCreate }) {
 
   return (
     <form name="create" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Name"
-      />
-      <input
-        type="text"
-        name="cuisine"
-        value={formData.cuisine}
-        onChange={handleChange}
-        placeholder="Cuisine"
-      />
-      <input
-        type="text"
-        name="photo"
-        value={formData.photo}
-        onChange={handleChange}
-        placeholder="Photo URL"
-      />
-      <textarea
-        name="ingredients"
-        value={formData.ingredients}
-        onChange={handleChange}
-        placeholder="Ingredients"
-      />
-      <textarea
-        name="preparation"
-        value={formData.preparation}
-        onChange={handleChange}
-        placeholder="Preparation"
-      />
-      <button type="submit">Create</button>
+      <table>
+        <tbody>
+          <tr style={{backgroundColor:'Khaki' }}>
+            <td><input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Name"
+            /></td>
+            <td><input
+              type="text"
+              name="cuisine"
+              value={formData.cuisine}
+              onChange={handleChange}
+              placeholder="Cuisine"
+            /></td>
+            <td><input
+              type="text"
+              name="photo"
+              value={formData.photo}
+              onChange={handleChange}
+              placeholder="Photo URL"
+            /></td>
+            <td><textarea
+              name="ingredients"
+              value={formData.ingredients}
+              onChange={handleChange}
+              placeholder="Ingredients"
+            /></td>
+            <td><textarea
+              name="preparation"
+              value={formData.preparation}
+              onChange={handleChange}
+              placeholder="Preparation"
+            /></td>
+            <td><button type="submit">Create</button></td>
+          </tr>
+        </tbody>
+      </table>
     </form>
   );
 }
